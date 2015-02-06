@@ -1,0 +1,91 @@
+[.]
+scm = git
+
+[calabash]
+repository = https://subversion.le-tex.de/common/calabash
+scm = svn
+path = calabash
+
+[cascade]
+repository = https://subversion.le-tex.de/common/pubcoach/trunk
+scm = svn
+path = cascade
+
+[evolve-hub]
+repository = https://subversion.le-tex.de/common/evolve-hub
+scm = svn
+path = evolve-hub
+
+[hub2html]
+repository = https://subversion.le-tex.de/common/hub2html_simple/trunk
+scm = svn
+path = hub2html
+
+[idml2xml]
+repository = https://subversion.le-tex.de/idmltools/trunk/idml2xml
+scm = svn
+path = idml2xml
+
+[schema/hub]
+repository = https://github.com/le-tex/Hub.git
+scm = git
+path = schema/hub
+revision = e3a6016
+branch = master
+
+[schema/hub/css]
+repository = https://github.com/le-tex/CSSa.git
+scm = git
+path = schema/hub/css
+branch = master
+
+[transpectdoc]
+repository = https://subversion.le-tex.de/common/transpectdoc/trunk
+scm = svn
+path = transpectdoc
+
+[xproc-util/xslt-mode]
+repository = https://subversion.le-tex.de/common/xproc-util/xslt-mode
+scm = svn
+path = xproc-util/xslt-mode
+
+[xproc-util/store-debug]
+repository = https://subversion.le-tex.de/common/xproc-util/store-debug
+scm = svn
+path = xproc-util/store-debug
+
+[xproc-util/file-uri]
+repository = https://subversion.le-tex.de/common/xproc-util/file-uri
+scm = svn
+path = xproc-util/file-uri
+
+[xproc-util/xml-model]
+repository = https://subversion.le-tex.de/common/xproc-util/xml-model
+scm = svn
+path = xproc-util/xml-model
+
+[xslt-util/colors]
+repository = https://subversion.le-tex.de/common/letex-util/colors/
+scm = svn
+path = xslt-util/colors
+
+[xslt-util/hex]
+repository = https://subversion.le-tex.de/common/letex-util/hex/
+scm = svn
+path = xslt-util/hex
+
+[xslt-util/resolve-uri]
+repository = https://subversion.le-tex.de/common/letex-util/resolve-uri/
+scm = svn
+path = xslt-util/resolve-uri
+
+[xslt-util/xslt-based-catalog-resolver]
+repository = https://subversion.le-tex.de/common/letex-util/xslt-based-catalog-resolver/
+scm = svn
+path = xslt-util/xslt-based-catalog-resolver
+
+[xslt-util/lengths]
+repository = https://subversion.le-tex.de/common/letex-util/lengths/
+scm = svn
+path = xslt-util/lengths
+
