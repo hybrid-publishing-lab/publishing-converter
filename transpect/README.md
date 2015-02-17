@@ -7,7 +7,8 @@
 
 ## Prerequisites
 
-ext (see http://nopugs.com/ext-tutorial)
+ * ext (see http://nopugs.com/ext-tutorial)
+ * Java 1.6 or newer (OpenJDK does not seem to work)
 
 ## Initial Checkout
 
