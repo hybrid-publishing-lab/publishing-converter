@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <rewriteURI uriStartString="http://customers.le-tex.de/generic/book-conversion/" rewritePrefix="../"/>
+  
+  <nextCatalog catalog="../idml2xml/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util/store-debug/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util/xslt-mode/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util/xml-model/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util/file-uri/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../htmlreports/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../hub2html/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../evolve-hub/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../cascade/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../epubtools/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../css-expand/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../css-generate/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../schema/Hub/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../schema/iso-schematron/catalog.xml"/>
+  <nextCatalog catalog="../fontlib/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../transpectdoc/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/colors/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/hex/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/lengths/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/resolve-uri/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/functx/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/mime-type/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/xslt-based-catalog-resolver/xmlcatalog/catalog.xml"/>
+  
+  <!-- content-repo.catalog.xml is unversioned.
+    Use this single-entry catalog for local configuration, like this: 
+  <rewriteURI uriStartString="http://cms.publisher.com/Books/" rewritePrefix="file:///c:/cygwin/home/user/Publisher/BookWorkflow/content/"/>
+    where http://cms.publisher.com/Books/ is a placeholder for what is actually in /publisher-conf/@content-base-uri
+    You may also provide a versioned file, content-repo.default.catalog.xml. It will be used if
+    no unversioned file is available.
+    Please note that due to shortcomings of Saxon’s use of catalogs, we’ll have to do catalog 
+    resolution by hand with fixed file names in pubcoach/xsl/paths.xsl. So please use only
+    content-repo.catalog.xml and content-repo.default.catalog.xml because otherwise it will break.
+  -->
+  <nextCatalog catalog="content-repo.catalog.xml"/>
+  <nextCatalog catalog="content-repo.default.catalog.xml"/>
+
+  <rewriteURI uriStartString="http://hybridpublishing.org/transpect/" rewritePrefix="../" />
+  
+</catalog>

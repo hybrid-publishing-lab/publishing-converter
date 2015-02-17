@@ -5,6 +5,7 @@ scm = git
 repository = https://subversion.le-tex.de/common/calabash
 scm = svn
 path = calabash
+revision = 2415
 
 [cascade]
 repository = https://subversion.le-tex.de/common/pubcoach/trunk
@@ -89,3 +90,17 @@ repository = https://subversion.le-tex.de/common/letex-util/lengths/
 scm = svn
 path = xslt-util/lengths
 
+[xslt-util/functx/xmlcatalog]
+repository = https://subversion.le-tex.de/common/functx/xmlcatalog 
+scm = svn
+path = xslt-util/functx/xmlcatalog
+
+[xslt-util/functx/XML_Elements_and_Attributes/XML_Document_Structure]
+repository = https://subversion.le-tex.de/common/functx/XML_Elements_and_Attributes/XML_Document_Structure 
+scm = svn
+path = xslt-util/functx/XML_Elements_and_Attributes/XML_Document_Structure
+
+[xslt-util/functx/Sequences/Positional]
+repository = https://subversion.le-tex.de/common/functx/Sequences/Positional 
+scm = svn
+path = xslt-util/functx/Sequences/Positional
