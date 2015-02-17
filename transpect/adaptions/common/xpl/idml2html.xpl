@@ -16,7 +16,7 @@
   type="hypub:idml2html">
 
   <p:option name="clades" select="''"/>
-  <p:option name="idmlfile" select="''"/>
+  <p:option name="input" select="''"/>
   <p:option name="all-styles" required="false" select="'no'"/>
   <p:option name="debug" required="false" select="'no'"/>
   <p:option name="debug-dir-uri" required="false" select="resolve-uri('debug')"/>
@@ -44,7 +44,7 @@
     <p:with-option name="all-styles" select="$all-styles"/>
     <p:with-option name="debug" select="$debug"/>
     <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
-    <p:with-option name="idmlfile" select="$idmlfile"/>
+    <p:with-option name="idmlfile" select="$input"/>
   </idml2xml:hub>
 
   <hub2htm:convert name="hub-html">
