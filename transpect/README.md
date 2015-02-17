@@ -22,6 +22,9 @@ For updates, call:
 
 ## Sample invocation
 
+This invokes a very simple IDML→HTML pipeline that doesn’t attempt at identifying any 
+structure in the input (othere pipelines are in preparation):
+
     ./calabash/calabash.sh -o html=out.html -o hub=/dev/null adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:$(readlink -m debug) input=../content/sample/sample.idml
 
 If you’re on a Mac and if you didn’t install the GNU version of readlink, you might have to specify the absolute path yourself.
