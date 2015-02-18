@@ -7,6 +7,8 @@ pubcoach
 schema/hub
 schema/hub/css
 transpectdoc
+content
+**/.DS_Store
 xproc-util/file-uri
 xproc-util/xslt-mode
 xproc-util/store-debug
