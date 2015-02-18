@@ -53,6 +53,7 @@
     <p:input port="paths">
       <p:empty/>
     </p:input>
+    <p:with-param name="target" select="'html5'"/>
     <p:with-param name="html-title" select="/*/dbk:info/dbk:keywordset[@role = 'hub']/dbk:keyword[@role = 'source-basename']"/>
   </hub2htm:convert>
 
