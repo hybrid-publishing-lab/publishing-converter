@@ -23,8 +23,8 @@ For updates, call:
 ## Sample invocation
 
 This invokes a very simple IDML→HTML pipeline that doesn’t attempt at identifying any 
-structure in the input (othere pipelines are in preparation). 
-In ```transpect``` folder, call:
+structure in the input (other pipelines are in preparation). 
+In the ```transpect``` folder, call:
 
     ./calabash/calabash.sh -o html=out.html -o hub=/dev/null adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:$(readlink -m debug) input=../content/sample/sample.idml
 
