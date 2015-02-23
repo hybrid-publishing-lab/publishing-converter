@@ -35,7 +35,7 @@ Relative paths for the IDML input should work fine though.
 
 Cygwin example:
 
-    ./calabash/calabash.sh -o html=out.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) idmlfile=../content/sample/sample.idml
+    ./calabash/calabash.sh -i conf=conf/transpect-conf.xml -o html=out.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) idmlfile=../content/sample/sample.idml
 
 ## Documentation
 

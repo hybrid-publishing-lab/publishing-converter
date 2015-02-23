@@ -17,3 +17,11 @@ xslt-util/colors
 xslt-util/hex
 xslt-util/resolve-uri
 xslt-util/lengths
+cascade
+xslt-util/xslt-based-catalog-resolver
+xslt-util/functx/xmlcatalog
+xslt-util/functx/XML_Elements_and_Attributes/XML_Document_Structure
+xslt-util/functx/Sequences/Positional
+map-style-names
+use-css-decorator-classes
+css-expand

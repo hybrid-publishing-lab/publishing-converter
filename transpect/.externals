@@ -104,3 +104,18 @@ path = xslt-util/functx/XML_Elements_and_Attributes/XML_Document_Structure
 repository = https://subversion.le-tex.de/common/functx/Sequences/Positional 
 scm = svn
 path = xslt-util/functx/Sequences/Positional
+
+[map-style-names]
+repository = https://subversion.le-tex.de/common/map-style-names/
+scm = svn
+path = map-style-names
+
+[use-css-decorator-classes]
+repository = https://subversion.le-tex.de/common/use-css-decorator-classes/
+scm = svn
+path = use-css-decorator-classes
+
+[css-expand]
+repository = https://subversion.le-tex.de/common/css-expand/
+scm = svn
+path = css-expand

@@ -15,10 +15,12 @@
   <nextCatalog catalog="../epubtools/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../css-expand/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../css-generate/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../map-style-names/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../schema/Hub/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../schema/iso-schematron/catalog.xml"/>
   <nextCatalog catalog="../fontlib/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../transpectdoc/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../use-css-decorator-classes/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../xslt-util/colors/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../xslt-util/hex/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../xslt-util/lengths/xmlcatalog/catalog.xml"/>

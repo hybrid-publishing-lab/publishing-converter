@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://transpect.le-tex.de/book-conversion/converter/schema/transpect-conf.rng"?>
+<?xml-model href="http://transpect.le-tex.de/book-conversion/converter/schema/transpect-conf.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<conf xmlns="http://www.le-tex.de/namespace/transpect"
+  content-base-uri="http://hybridpublishing.org/content/"><!-- Will be catalog-resolved to some local dir -->
+  <cascade>
+    <reserved name="css"/>
+    <reserved name="epubtools"/>
+    <reserved name="evolve-hub"/>
+    <reserved name="fonts"/>
+    <reserved name="htmlreports"/>
+    <reserved name="htmltemplates"/>
+    <reserved name="hub2html"/>
+    <reserved name="hub2tei"/>
+    <reserved name="metadata"/>
+    <reserved name="schematron"/>
+    <reserved name="styles"/>
+    <reserved name="tei2html"/>
+    <reserved name="xpl"/>
+    <reserved name="xsl"/>
+    <clade role="genre" name="Catalogues">
+      <param name="use-css-decorator-classes" value="yes"/>
+      <param name="epub-version" value="EPUB3"/>
+      <clade role="institution" name="Winterthur">
+        <clade name="Manifeste" role="exhibition">
+          <content role="work"/>  
+        </clade>
+      </clade>
+    </clade>
+  </cascade>
+</conf>
