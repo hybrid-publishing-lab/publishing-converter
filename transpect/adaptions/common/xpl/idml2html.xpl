@@ -41,6 +41,7 @@
   <p:serialization port="html" omit-xml-declaration="false" method="xhtml" indent="true"/>
 
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/paths.xpl"/>
+  <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/evolve-hub.xpl"/>
   <p:import href="http://transpect.le-tex.de/hub2html/xpl/hub2html.xpl"/>
   <p:import href="http://transpect.le-tex.de/idml2xml/xpl/idml2hub.xpl"/>
   <p:import href="http://transpect.le-tex.de/map-style-names/xpl/map-style-names.xpl"/>
@@ -83,17 +84,29 @@
     <p:with-option name="status-dir-uri" select="$status-dir-uri"/>
   </css:map-styles>
 
+  <transpect:evolve-hub name="evolve-hub" srcpaths="yes">
+    <p:input port="paths">
+      <p:pipe port="result" step="paths"/> 
+    </p:input>
+    <p:with-option name="load" select="concat('evolve-hub/driver-', /c:param-set/c:param[@name eq 'ext']/@value)">
+      <p:pipe port="result" step="paths"/>
+    </p:with-option>
+    <p:with-option name="debug" select="$debug"/>
+    <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
+    <p:with-option name="status-dir-uri" select="$status-dir-uri"/>
+  </transpect:evolve-hub>
+
   <hub2htm:convert name="hub-html">
     <p:with-option name="debug" select="$debug"/>
     <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
     <p:input port="paths">
-      <p:empty/>
+      <p:pipe port="result" step="paths"/>
     </p:input>
     <p:with-param name="target" select="'html5'"/>
     <p:with-param name="html-title" select="/*/dbk:info/dbk:keywordset[@role = 'hub']/dbk:keyword[@role = 'source-basename']"/>
   </hub2htm:convert>
 
-  <p:delete match="/html:html/html:head/html:link[@href='/css/stylesheet.css']"/>
+  <p:delete match="/html:html/html:head/html:link[matches(@href, '/css/stylesheet.css')]"/>
 
   <p:choose name="decorators">
     <p:xpath-context>
