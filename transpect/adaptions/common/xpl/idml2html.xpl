@@ -7,6 +7,7 @@
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:s="http://purl.oclc.org/dsdl/schematron" 
+  xmlns:epub="http://transpect.le-tex.de/epubtools"
   xmlns:transpect="http://www.le-tex.de/namespace/transpect"
   xmlns:hub2htm="http://www.le-tex.de/namespace/hub2htm" 
   xmlns:idml2xml="http://www.le-tex.de/namespace/idml2xml"
@@ -31,7 +32,15 @@
   </p:option>
   
   <p:input port="conf" primary="true">
-    <p:empty/>
+    <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+      <p>See the section on 
+        <a href="https://subversion.le-tex.de/common/transpect-demo/content/le-tex/setup-manual/en/out/xhtml/transpect-setup.xhtml#sec-cascade">configuration clades.</a>
+      </p>
+      <p>The converter works also without clade-based configuration. If you store your content in an arbitrary directory (e.g,
+        /my/dir/idml/mycontent.idml), you may put content-specific configuration overrides into /my/dir/css, /my/dir/evolve-hub,
+        etc.</p>
+    </p:documentation>
+    <p:document href="http://customers.le-tex.de/generic/book-conversion/conf/transpect-conf.xml"/>
   </p:input>
   <p:output port="hub">
     <p:pipe port="result" step="idml2hub"/>
@@ -40,10 +49,12 @@
   <p:output port="html" primary="true"/>
   <p:serialization port="html" omit-xml-declaration="false" method="xhtml" indent="true"/>
 
-  <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/paths.xpl"/>
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/evolve-hub.xpl"/>
+  <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/load-cascaded.xpl"/>
+  <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/paths.xpl"/>
   <p:import href="http://transpect.le-tex.de/hub2html/xpl/hub2html.xpl"/>
   <p:import href="http://transpect.le-tex.de/idml2xml/xpl/idml2hub.xpl"/>
+  <p:import href="http://transpect.le-tex.de/epubtools/epub-convert.xpl"/>
   <p:import href="http://transpect.le-tex.de/map-style-names/xpl/map-style-names.xpl"/>
   <p:import href="http://transpect.le-tex.de/use-css-decorator-classes/xpl/use-css-decorator-classes.xpl"/>
   <p:import href="http://transpect.le-tex.de/xproc-util/store-debug/store-debug.xpl"/>
@@ -106,7 +117,7 @@
     <p:with-param name="html-title" select="/*/dbk:info/dbk:keywordset[@role = 'hub']/dbk:keyword[@role = 'source-basename']"/>
   </hub2htm:convert>
 
-  <p:delete match="/html:html/html:head/html:link[matches(@href, '/css/stylesheet.css')]"/>
+  <!--<p:delete match="/html:html/html:head/html:link[matches(@href, '/css/stylesheet.css')]"/>-->
 
   <p:choose name="decorators">
     <p:xpath-context>
@@ -125,6 +136,38 @@
     </p:otherwise>
   </p:choose>
   
-  <p:delete match="@source-dir-uri | @srcpath"/>
+  <p:delete match="@source-dir-uri | @srcpath" />
+  
+  <p:add-attribute attribute-name="xml:base" match="/*" >
+    <p:with-option name="attribute-value" select="replace(base-uri(/*), '^(.+?)(/[^/]+)(/.[^/]+)\.idml.*$', '$1$3.xhtml')"/>
+  </p:add-attribute>
+  
+  <cx:message name="html">
+    <p:with-option name="message" select="'BBBBBBBBBBBBBBBBBBBUUUUUUUUUUUUUUUUUUUUUU ', base-uri(/*)"></p:with-option>
+  </cx:message>
+
+  <transpect:load-cascaded name="epub-conf" filename="epubtools/epub-config.xml">
+    <p:input port="paths">
+      <p:pipe port="result" step="paths"/>
+    </p:input>
+    <p:with-option name="debug" select="$debug"/>
+    <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
+  </transpect:load-cascaded>  
+  
+  <epub:convert name="epub-convert">
+    <p:input port="source">
+      <p:pipe step="html" port="result"/>
+    </p:input>
+    <p:input port="meta">
+      <p:pipe port="result" step="epub-conf"/>
+    </p:input>
+    <p:input port="conf">
+      <p:empty/>
+    </p:input>
+    <p:with-option name="terminate-on-error" select="'no'"/>
+    <p:with-option name="debug" select="$debug"/>
+    <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
+    <p:with-option name="status-dir-uri" select="$status-dir-uri"/>
+  </epub:convert>
     
 </p:declare-step>

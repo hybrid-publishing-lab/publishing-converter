@@ -119,3 +119,28 @@ path = use-css-decorator-classes
 repository = https://subversion.le-tex.de/common/css-expand/
 scm = svn
 path = css-expand
+
+[epubtools]
+repository = https://subversion.le-tex.de/common/epubtools/
+scm = svn
+path = epubtools
+
+[css-generate]
+repository = https://subversion.le-tex.de/common/css-generate/
+scm = svn
+path = css-generate
+
+[fontlib/xmlcatalog]
+repository = https://subversion.le-tex.de/common/fontlib/xmlcatalog
+scm = svn
+path = fontlib/xmlcatalog
+
+[fontlib/dejavu-sans]
+repository = https://subversion.le-tex.de/common/fontlib/dejavu-sans
+scm = svn
+path = fontlib/dejavu-sans
+
+[xslt-util/mime-type]
+repository = https://subversion.le-tex.de/common/letex-util/mime-type
+scm = svn
+path = xslt-util/mime-type

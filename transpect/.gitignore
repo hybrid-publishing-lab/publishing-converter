@@ -25,3 +25,8 @@ xslt-util/functx/Sequences/Positional
 map-style-names
 use-css-decorator-classes
 css-expand
+epubtools
+css-generate
+fontlib/xmlcatalog
+fontlib/dejavu-sans
+xslt-util/mime-type
