@@ -22,11 +22,13 @@ For updates, call:
 
 ## Sample invocation
 
-This invokes a very simple IDML→HTML pipeline that doesn’t attempt at identifying any 
+This invokes a simplistic IDML→HTML→EPUB pipeline that doesn’t attempt at identifying any 
 structure in the input (other pipelines are in preparation). 
 In the ```transpect``` folder, call:
 
-    ./calabash/calabash.sh -o html=out.html -o hub=/dev/null adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:$(readlink -m debug) input=../content/sample/sample.idml
+    ./calabash/calabash.sh -o html=out.html -o hub=/dev/null adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:$(readlink -m debug) input=../content/sample/idml/sample.idml
+
+The EPUB will then be created as ../content/sample/sample.epub
 
 If you’re on a Mac and if you didn’t install the GNU version of readlink, you might have to specify the absolute path yourself.
 
@@ -35,7 +37,7 @@ Relative paths for the IDML input should work fine though.
 
 Cygwin example:
 
-    ./calabash/calabash.sh -o html=out.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) input=../content/sample/sample.idml
+    ./calabash/calabash.sh -o html=out.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2html.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) input=../content/sample/idml/sample.idml
 
 ## Documentation
 

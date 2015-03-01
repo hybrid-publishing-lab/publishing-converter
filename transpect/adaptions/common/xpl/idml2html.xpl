@@ -117,8 +117,6 @@
     <p:with-param name="html-title" select="/*/dbk:info/dbk:keywordset[@role = 'hub']/dbk:keyword[@role = 'source-basename']"/>
   </hub2htm:convert>
 
-  <!--<p:delete match="/html:html/html:head/html:link[matches(@href, '/css/stylesheet.css')]"/>-->
-
   <p:choose name="decorators">
     <p:xpath-context>
       <p:pipe port="result" step="paths"/>
@@ -138,13 +136,9 @@
   
   <p:delete match="@source-dir-uri | @srcpath" />
   
-  <p:add-attribute attribute-name="xml:base" match="/*" >
+  <p:add-attribute attribute-name="xml:base" match="/*" name="html">
     <p:with-option name="attribute-value" select="replace(base-uri(/*), '^(.+?)(/[^/]+)(/.[^/]+)\.idml.*$', '$1$3.xhtml')"/>
   </p:add-attribute>
-  
-  <cx:message name="html">
-    <p:with-option name="message" select="'BBBBBBBBBBBBBBBBBBBUUUUUUUUUUUUUUUUUUUUUU ', base-uri(/*)"></p:with-option>
-  </cx:message>
 
   <transpect:load-cascaded name="epub-conf" filename="epubtools/epub-config.xml">
     <p:input port="paths">
