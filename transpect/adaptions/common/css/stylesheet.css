@@ -1,0 +1,24 @@
+.noindent{
+  text-indent:0;
+}
+
+.italic{
+  font-style:italic;
+}
+
+.underline{
+  text-decoration:line-through;
+}
+
+.nounderline{
+  text-decoration:none;
+  text-decoration-line:none;
+}
+
+.serif{
+  font-family:serif;
+}
+
+.right{
+  text-align:right;
+}
