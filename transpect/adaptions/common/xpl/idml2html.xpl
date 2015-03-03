@@ -46,8 +46,14 @@
     <p:pipe port="result" step="idml2hub"/>
   </p:output>
   <p:serialization port="hub" omit-xml-declaration="false"/>
-  <p:output port="html" primary="true"/>
+  <p:output port="html" primary="true">
+    <p:pipe port="result" step="html"/>
+  </p:output>
   <p:serialization port="html" omit-xml-declaration="false" method="xhtml" indent="true"/>
+  <p:output port="epub-zip-manifest">
+    <p:pipe port="result" step="epub-convert"/>
+  </p:output>
+  <p:serialization port="epub-zip-manifest" omit-xml-declaration="false" method="xhtml" indent="true"/>
 
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/evolve-hub.xpl"/>
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/load-cascaded.xpl"/>
@@ -134,7 +140,7 @@
     </p:otherwise>
   </p:choose>
   
-  <p:delete match="@source-dir-uri | @srcpath" />
+  <p:delete match="@source-dir-uri | @srcpath"/>
   
   <p:add-attribute attribute-name="xml:base" match="/*" name="html">
     <p:with-option name="attribute-value" select="replace(base-uri(/*), '^(.+?)(/[^/]+)(/.[^/]+)\.idml.*$', '$1$3.xhtml')"/>
@@ -163,5 +169,7 @@
     <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
     <p:with-option name="status-dir-uri" select="$status-dir-uri"/>
   </epub:convert>
-    
+
+  <p:sink/>
+
 </p:declare-step>
