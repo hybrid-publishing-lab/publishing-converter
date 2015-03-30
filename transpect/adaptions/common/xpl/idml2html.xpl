@@ -50,10 +50,10 @@
     <p:pipe port="result" step="html"/>
   </p:output>
   <p:serialization port="html" omit-xml-declaration="false" method="xhtml" indent="true"/>
-  <p:output port="epub-zip-manifest">
+  <p:output port="epub-file">
     <p:pipe port="result" step="epub-convert"/>
   </p:output>
-  <p:serialization port="epub-zip-manifest" omit-xml-declaration="false" method="xhtml" indent="true"/>
+  <p:serialization port="epub-file" omit-xml-declaration="false" indent="true"/>
 
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/evolve-hub.xpl"/>
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/load-cascaded.xpl"/>
