@@ -9,28 +9,32 @@ uri = $(shell echo file:$(abspath $(1))  | sed -r 's/ /%20/g')
 endif
 
 JAVA := java
-CALABASH = $(MAKEFILEDIR)/calabash/calabash.sh -D
 DEBUG := yes
 UI_LANG = en
 HEAP = 1024m
-CONF = conf/transpect-conf.xml
 CODE := $(MAKEFILEDIR)
+CALABASH = $(CODE)/calabash/calabash.sh -D
+CONF = $(CODE)/conf/transpect-conf.xml
 DEVNULL = $(call win_path,/dev/null)
 LC_ALL = en_US.UTF-8
 FRONTEND_PIPELINES = adaptions/common/xpl/idml2html.xpl
 
 OUT_DIR    = out
+WORK_DIR_REL = 
 BASENAME   = $(basename $(notdir $(IN_FILE)))
+# Less transient storage for idml files and unzipped archives:
+WORK_DIR   = $(shell readlink -m $(OUT_DIR)/../../$(BASENAME))
 OUT_BASE   = $(OUT_DIR)/$(BASENAME)
-IN_FILE_COPY = $(OUT_DIR)/$(notdir $(IN_FILE))
+IN_FILE_COPY = $(WORK_DIR)/$(notdir $(IN_FILE))
 ifeq ($(suffix $(IN_FILE)),.idml)
-	IN_FILE_COPY = $(OUT_DIR)/idml/$(notdir $(IN_FILE))
+	IN_FILE_COPY = $(WORK_DIR)/idml/$(notdir $(IN_FILE))
 endif
 HTMLREPORT = $(OUT_BASE).report.xhtml
 HTML 	   = $(OUT_BASE).xhtml
 HUB 	   = $(OUT_BASE).hub.xml
 EPUB	   = $(OUT_BASE).epub
-DEBUG_DIR_URI = $(call uri,$(OUT_DIR)/debug)
+DEBUG_DIR  = $(WORK_DIR)/debug
+DEBUG_DIR_URI = $(call uri,$(DEBUG_DIR))
 PROGRESSDIR= $(OUT_DIR)/debug/status
 ACTIONLOG  = $(PROGRESSDIR)/action.log
 
@@ -74,14 +78,16 @@ idml2epub:
 		-o hub=$(HUB) \
 		-o html=$(HTML) \
 		-o htmlreport=$(HTMLREPORT) \
-		-o result=$(DEVNULL) \
-		$(call uri,adaptions/common/xpl/idml2html.xpl) \
+		-o result=$(DEBUG_DIR)/result.xml \
+		$(call uri,$(MAKEFILEDIR)/adaptions/common/xpl/idml2html.xpl) \
 		input=$(call win_path,$(IN_FILE_COPY)) \
 		interface-language=$(UI_LANG) \
 		debug-dir-uri=$(DEBUG_DIR_URI) \
-		status-dir-uri=$(DEBUG_DIR_URI)/status \
+		status-dir-uri=$(call uri,$(PROGRESSDIR)) \
 		debug=yes \
 		$(XPROCPARAMS)
+	-find $(WORK_DIR) -name '*.epub' -cnewer $(IN_FILE_COPY) -exec /bin/cp {} $(OUT_DIR) ';'
+	$(MAKE) tree
 
 transpectdoc: $(addprefix $(MAKEFILEDIR)/,$(FRONTEND_PIPELINES))
 	-mkdir $(MAKEFILEDIR)/doc/transpectdoc
@@ -91,10 +97,14 @@ transpectdoc: $(addprefix $(MAKEFILEDIR)/,$(FRONTEND_PIPELINES))
 		project-name=Unionsverlag \
 		debug=$(DEBUG) 	debug-dir-uri=$(call uri,$(MAKEFILEDIR)/doc/transpectdoc/debug)
 
+tree:
+	tree -H "../../$(BASENAME)" $(WORK_DIR) > $(OUT_DIR)/filelist.html
+
 unzip: 
 	-mkdir -p $(PROGRESSDIR)
 	@echo unzipping $(notdir $(IN_FILE_COPY)) >> $(PROGRESSDIR)/unzip.txt
-	unzip -o $(IN_FILE_COPY) -x '__MACOSX*' -d $(dir $(IN_FILE_COPY))
+	unzip -o $(IN_FILE_COPY) -x '__MACOSX*' -d $(WORK_DIR)
+	$(MAKE) tree
 #	mkdir -p $(dir $(IN_FILE_COPY))/unzipped && unzip -o $(IN_FILE_COPY) -x '__MACOSX*' -d $(dir $(IN_FILE_COPY))/unzipped
 #	for f in $(shell find $(dir $(IN_FILE_COPY))/unzipped); do if [[ "$$f" =~ ' ' ]] ; then echo "$$f": Filename must not contain spaces >> $(PROGRESSDIR)/unzip.txt; exit 11; fi; done
 #	$(MAKE) process_unzipped IN_FILE=$(dir $(IN_FILE_COPY))/unzipped
