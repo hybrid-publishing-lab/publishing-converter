@@ -66,12 +66,13 @@ conversion: check_input mkdirs
 ifeq ($(suffix $(IN_FILE_COPY)),.idml)
 	$(MAKE) idml2epub
 else
-ifeq ($(suffix $(IN_FILE_COPY)),.idml)
+ifeq ($(suffix $(IN_FILE_COPY)),.html .xhtml)
 	$(MAKE) html2epub
 else
 ifeq ($(suffix $(IN_FILE_COPY)),.zip)
 	$(MAKE) unzip
 	-rm $(IN_FILE_COPY)
+endif
 endif
 endif
 
