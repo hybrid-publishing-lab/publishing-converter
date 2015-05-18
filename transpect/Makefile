@@ -66,7 +66,7 @@ conversion: check_input mkdirs
 ifeq ($(suffix $(IN_FILE_COPY)),.idml)
 	$(MAKE) idml2epub
 else
-ifeq ($(suffix $(IN_FILE_COPY)),.html .xhtml)
+ifneq (,$(findstring $(suffix $(IN_FILE_COPY)),.html .xhtml))
 	$(MAKE) html2epub
 else
 ifeq ($(suffix $(IN_FILE_COPY)),.zip)
