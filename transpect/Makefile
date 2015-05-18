@@ -31,6 +31,7 @@ ifeq ($(suffix $(IN_FILE)),.idml)
 endif
 HTMLREPORT = $(OUT_BASE).report.xhtml
 HTML 	   = $(OUT_BASE).xhtml
+RAW_HTML   = $(OUT_BASE).raw.xhtml
 HUB 	   = $(OUT_BASE).hub.xml
 EPUB	   = $(OUT_BASE).epub
 DEBUG_DIR  = $(WORK_DIR)/debug
@@ -65,6 +66,9 @@ conversion: check_input mkdirs
 ifeq ($(suffix $(IN_FILE_COPY)),.idml)
 	$(MAKE) idml2epub
 else
+ifeq ($(suffix $(IN_FILE_COPY)),.idml)
+	$(MAKE) html2epub
+else
 ifeq ($(suffix $(IN_FILE_COPY)),.zip)
 	$(MAKE) unzip
 	-rm $(IN_FILE_COPY)
@@ -74,12 +78,29 @@ endif
 idml2epub:
 	UI_LANG=$(UI_LANG) HEAP=$(HEAP) \
 		$(CALABASH) -D \
-		-i conf=$(call uri,$(CONF)) \
 		-o hub=$(HUB) \
+		-o html=$(HTML) \
+		-o raw-html=$(RAW_HTML) \
+		-o htmlreport=$(HTMLREPORT) \
+		-o result=$(DEBUG_DIR)/result.xml \
+		$(call uri,$(MAKEFILEDIR)/adaptions/common/xpl/idml2epub.xpl) \
+		input=$(call win_path,$(IN_FILE_COPY)) \
+		interface-language=$(UI_LANG) \
+		debug-dir-uri=$(DEBUG_DIR_URI) \
+		status-dir-uri=$(call uri,$(PROGRESSDIR)) \
+		debug=yes \
+		$(XPROCPARAMS)
+	-find $(WORK_DIR) -name '*.epub' -cnewer $(IN_FILE_COPY) -exec /bin/cp {} $(OUT_DIR) ';'
+	$(MAKE) tree
+
+html2epub:
+	UI_LANG=$(UI_LANG) HEAP=$(HEAP) \
+		$(CALABASH) -D \
+		-i source=$(call uri,$(IN_FILE_COPY)) \
 		-o html=$(HTML) \
 		-o htmlreport=$(HTMLREPORT) \
 		-o result=$(DEBUG_DIR)/result.xml \
-		$(call uri,$(MAKEFILEDIR)/adaptions/common/xpl/idml2html.xpl) \
+		$(call uri,$(MAKEFILEDIR)/adaptions/common/xpl/html2epub.xpl) \
 		input=$(call win_path,$(IN_FILE_COPY)) \
 		interface-language=$(UI_LANG) \
 		debug-dir-uri=$(DEBUG_DIR_URI) \

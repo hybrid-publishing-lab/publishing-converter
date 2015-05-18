@@ -1,12 +1,6 @@
 [.]
 scm = git
 
-[calabash]
-repository = https://subversion.le-tex.de/common/calabash
-scm = svn
-path = calabash
-#revision = 3252
-
 [cascade]
 repository = https://subversion.le-tex.de/common/pubcoach/trunk
 scm = svn

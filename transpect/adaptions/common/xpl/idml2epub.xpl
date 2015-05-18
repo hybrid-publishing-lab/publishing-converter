@@ -15,8 +15,8 @@
   xmlns:hypub="http://hybridpublishing.org/"
   xmlns:dbk="http://docbook.org/ns/docbook"
   version="1.0" 
-  name="idml2html"
-  type="hypub:idml2html">
+  name="idml2epub"
+  type="hypub:idml2epub">
 
   <p:option name="clades" select="''"/>
   <p:option name="input" select="''"/>
@@ -32,6 +32,7 @@
   </p:option>
   
   <p:input port="conf" primary="true">
+    <p:document href="http://customers.le-tex.de/generic/book-conversion/conf/transpect-conf.xml"/>
     <p:documentation xmlns="http://www.w3.org/1999/xhtml">
       <p>See the section on 
         <a href="https://subversion.le-tex.de/common/transpect-demo/content/le-tex/setup-manual/en/out/xhtml/transpect-setup.xhtml#sec-cascade">configuration clades.</a>
@@ -40,22 +41,21 @@
         /my/dir/idml/mycontent.idml), you may put content-specific configuration overrides into /my/dir/css, /my/dir/evolve-hub,
         etc.</p>
     </p:documentation>
-    <p:document href="http://customers.le-tex.de/generic/book-conversion/conf/transpect-conf.xml"/>
   </p:input>
   <p:output port="hub">
     <p:pipe port="result" step="idml2hub"/>
   </p:output>
   <p:serialization port="hub" omit-xml-declaration="false"/>
   <p:output port="html" primary="true">
-    <p:pipe port="result" step="html"/>
-  </p:output>
-  <p:output port="raw-html" primary="true">
-    <p:pipe port="result" step="raw-hub-html"/>
+    <p:pipe port="html" step="html2epub"/>
   </p:output>
   <p:serialization port="html" omit-xml-declaration="false" method="xhtml" indent="true"/>
+  <p:output port="raw-html">
+    <p:pipe port="result" step="raw-hub-html"/>
+  </p:output>
   <p:serialization port="raw-html" omit-xml-declaration="false" method="xhtml" indent="true"/>
   <p:output port="epub-file">
-    <p:pipe port="result" step="epub-convert"/>
+    <p:pipe port="result" step="html2epub"/>
   </p:output>
   <p:serialization port="epub-file" omit-xml-declaration="false" indent="true"/>
 
@@ -64,13 +64,12 @@
   <p:import href="http://transpect.le-tex.de/book-conversion/converter/xpl/paths.xpl"/>
   <p:import href="http://transpect.le-tex.de/hub2html/xpl/hub2html.xpl"/>
   <p:import href="http://transpect.le-tex.de/idml2xml/xpl/idml2hub.xpl"/>
-  <p:import href="http://transpect.le-tex.de/epubtools/epub-convert.xpl"/>
   <p:import href="http://transpect.le-tex.de/map-style-names/xpl/map-style-names.xpl"/>
-  <p:import href="http://transpect.le-tex.de/use-css-decorator-classes/xpl/use-css-decorator-classes.xpl"/>
   <p:import href="http://transpect.le-tex.de/xproc-util/store-debug/store-debug.xpl"/>
   <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
+  <p:import href="html2epub.xpl"/>
 
-  <transpect:paths name="paths" determine-transpect-project-version="no" pipeline="idml2html">
+  <transpect:paths name="paths" determine-transpect-project-version="no" pipeline="idml2epub">
     <p:with-option name="interface-language" select="$interface-language"/>
     <p:with-option name="clades" select="$clades"/>
     <p:with-option name="file" select="$input"/>
@@ -78,7 +77,7 @@
     <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
     <p:with-option name="status-dir-uri" select="$status-dir-uri"/>
     <p:input port="conf">
-      <p:pipe port="conf" step="idml2html"/>
+      <p:pipe port="conf" step="idml2epub"/>
     </p:input>
     <p:input port="stylesheet">
       <p:document href="http://transpect.le-tex.de/book-conversion/converter/xsl/paths.xsl"/>
@@ -142,52 +141,14 @@
     <p:with-param name="html-title" select="/*/dbk:info/dbk:keywordset[@role = 'hub']/dbk:keyword[@role = 'source-basename']"/>
   </hub2htm:convert>
 
-  <p:choose name="decorators">
-    <p:xpath-context>
-      <p:pipe port="result" step="paths"/>
-    </p:xpath-context>
-    <p:when test="(/c:param-set/c:param[@name = 'use-css-decorator-classes']/@value, $decorators)[1] = 'yes'">
-      <p:output port="result" primary="true"/>
-      <css:use-decorator-classes>
-        <p:with-option name="debug" select="$debug"/>
-        <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
-      </css:use-decorator-classes>
-    </p:when>
-    <p:otherwise>
-      <p:output port="result" primary="true"/>
-      <p:identity name="testi"/>
-    </p:otherwise>
-  </p:choose>
-  
-  <p:delete match="@source-dir-uri | @srcpath"/>
-  
-  <p:add-attribute attribute-name="xml:base" match="/*" name="html">
-    <p:with-option name="attribute-value" select="replace(base-uri(/*), '^(.+?)(/[^/]+)(/.[^/]+)\.idml.*$', '$1$3.xhtml')"/>
-  </p:add-attribute>
-
-  <transpect:load-cascaded name="epub-conf" filename="epubtools/epub-config.xml">
-    <p:input port="paths">
-      <p:pipe port="result" step="paths"/>
-    </p:input>
-    <p:with-option name="debug" select="$debug"/>
-    <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
-  </transpect:load-cascaded>  
-  
-  <epub:convert name="epub-convert">
-    <p:input port="source">
-      <p:pipe step="html" port="result"/>
-    </p:input>
-    <p:input port="meta">
-      <p:pipe port="result" step="epub-conf"/>
-    </p:input>
-    <p:input port="conf">
-      <p:empty/>
-    </p:input>
-    <p:with-option name="terminate-on-error" select="'no'"/>
+  <hypub:html2epub name="html2epub">
     <p:with-option name="debug" select="$debug"/>
     <p:with-option name="debug-dir-uri" select="$debug-dir-uri"/>
     <p:with-option name="status-dir-uri" select="$status-dir-uri"/>
-  </epub:convert>
+    <p:input port="paths">
+      <p:pipe port="result" step="paths"/>
+    </p:input>
+  </hypub:html2epub>
 
   <p:sink/>
 
