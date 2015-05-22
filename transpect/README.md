@@ -20,9 +20,13 @@ In ```transpect``` folder, call:
 
 ## Updates
 
-For updates, call:
+Whenever you want to use transpect, you need to be up-to-date. 
+Call:
 
     git submodule update --recursive
+
+Then call:
+
     ext up
 
 ## Sample invocation
