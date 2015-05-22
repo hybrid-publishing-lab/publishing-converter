@@ -18,6 +18,8 @@ In ```transpect``` folder, call:
 
     ext co
 
+## Updates
+
 For updates, call:
 
     git submodule update --recursive
