@@ -12,11 +12,7 @@
 
 ## Initial Checkout
 
-    git clone --recursive https://github.com/consortium/BinB/tree/master/transpect
-
-In the ```BinB``` folder, call:
-
-    git submodule update --init --recursive
+    git clone --recursive https://github.com/consortium/BinB
 
 In ```transpect``` folder, call:
 
