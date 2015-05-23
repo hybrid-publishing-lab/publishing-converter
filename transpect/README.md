@@ -12,16 +12,21 @@
 
 ## Initial Checkout
 
-git clone --recursive https://github.com/consortium/BinB/tree/master/transpect
-git submodule update --init --recursive
+    git clone --recursive https://github.com/consortium/BinB
 
 In ```transpect``` folder, call:
 
     ext co
 
-For updates, call:
+## Updates
+
+Whenever you want to use transpect, you need to be up-to-date. 
+Call:
 
     git submodule update --recursive
+
+Then call:
+
     ext up
 
 ## Sample invocation
