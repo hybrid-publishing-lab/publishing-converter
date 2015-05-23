@@ -43,6 +43,13 @@ Cygwin example:
 
     ./calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) input=../content/sample/idml/sample.idml
 
+### HTML → EPUB pipeline
+
+The pipeline ```idml2epub.xpl``` invokes another pipeline, ```html2epub.xpl```, that you may also invoke directly:
+
+    ./calabash/calabash.sh -i source=edited.html -o html=/dev/null adaptions/common/xpl/html2epub.xpl
+
+
 ## Documentation
 
 HTML pages of the embedded XProc documentation may be generated with the following command line invocation: 
