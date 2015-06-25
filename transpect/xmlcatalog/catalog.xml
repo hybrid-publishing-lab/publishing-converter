@@ -4,10 +4,8 @@
   <rewriteURI uriStartString="http://customers.le-tex.de/generic/book-conversion/" rewritePrefix="../"/>
   
   <nextCatalog catalog="../idml2xml/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xproc-util/store-debug/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xproc-util/xslt-mode/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xproc-util/xml-model/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xproc-util/file-uri/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xproc-util-legacy/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../htmlreports/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../hub2html/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../evolve-hub/xmlcatalog/catalog.xml"/>
@@ -18,16 +16,12 @@
   <nextCatalog catalog="../map-style-names/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../schema/Hub/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../schema/iso-schematron/catalog.xml"/>
+  <nextCatalog catalog="../schematron/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../fontlib/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../transpectdoc/xmlcatalog/catalog.xml"/>
   <nextCatalog catalog="../use-css-decorator-classes/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/colors/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/hex/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/lengths/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/resolve-uri/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/functx/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/mime-type/xmlcatalog/catalog.xml"/>
-  <nextCatalog catalog="../xslt-util/xslt-based-catalog-resolver/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util/xmlcatalog/catalog.xml"/>
+  <nextCatalog catalog="../xslt-util-legacy/xmlcatalog/catalog.xml"/>
   
   <!-- content-repo.catalog.xml is unversioned.
     Use this single-entry catalog for local configuration, like this: 

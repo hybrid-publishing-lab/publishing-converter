@@ -39,65 +39,25 @@ repository = https://subversion.le-tex.de/common/transpectdoc/trunk
 scm = svn
 path = transpectdoc
 
-[xproc-util/xslt-mode]
-repository = https://subversion.le-tex.de/common/xproc-util/xslt-mode
+[xproc-util]
+repository = https://github.com/transpect/xproc-util/trunk
 scm = svn
-path = xproc-util/xslt-mode
+path = xproc-util
 
-[xproc-util/store-debug]
-repository = https://subversion.le-tex.de/common/xproc-util/store-debug
+[xproc-util-legacy]
+repository = https://subversion.le-tex.de/common/xproc-util/
 scm = svn
-path = xproc-util/store-debug
+path = xproc-util-legacy
 
-[xproc-util/file-uri]
-repository = https://subversion.le-tex.de/common/xproc-util/file-uri
+[xslt-util]
+repository = https://github.com/transpect/xslt-util/trunk
 scm = svn
-path = xproc-util/file-uri
+path = xslt-util
 
-[xproc-util/xml-model]
-repository = https://subversion.le-tex.de/common/xproc-util/xml-model
+[xslt-util-legacy]
+repository = https://subversion.le-tex.de/common/letex-util/
 scm = svn
-path = xproc-util/xml-model
-
-[xslt-util/colors]
-repository = https://subversion.le-tex.de/common/letex-util/colors/
-scm = svn
-path = xslt-util/colors
-
-[xslt-util/hex]
-repository = https://subversion.le-tex.de/common/letex-util/hex/
-scm = svn
-path = xslt-util/hex
-
-[xslt-util/resolve-uri]
-repository = https://subversion.le-tex.de/common/letex-util/resolve-uri/
-scm = svn
-path = xslt-util/resolve-uri
-
-[xslt-util/xslt-based-catalog-resolver]
-repository = https://subversion.le-tex.de/common/letex-util/xslt-based-catalog-resolver/
-scm = svn
-path = xslt-util/xslt-based-catalog-resolver
-
-[xslt-util/lengths]
-repository = https://subversion.le-tex.de/common/letex-util/lengths/
-scm = svn
-path = xslt-util/lengths
-
-[xslt-util/functx/xmlcatalog]
-repository = https://subversion.le-tex.de/common/functx/xmlcatalog 
-scm = svn
-path = xslt-util/functx/xmlcatalog
-
-[xslt-util/functx/XML_Elements_and_Attributes/XML_Document_Structure]
-repository = https://subversion.le-tex.de/common/functx/XML_Elements_and_Attributes/XML_Document_Structure 
-scm = svn
-path = xslt-util/functx/XML_Elements_and_Attributes/XML_Document_Structure
-
-[xslt-util/functx/Sequences/Positional]
-repository = https://subversion.le-tex.de/common/functx/Sequences/Positional 
-scm = svn
-path = xslt-util/functx/Sequences/Positional
+path = xslt-util-legacy
 
 [map-style-names]
 repository = https://subversion.le-tex.de/common/map-style-names/
@@ -138,3 +98,8 @@ path = fontlib/dejavu-sans
 repository = https://subversion.le-tex.de/common/letex-util/mime-type
 scm = svn
 path = xslt-util/mime-type
+
+[schematron]
+repository = https://github.com/transpect/schematron/trunk
+scm = svn
+path = schematron
