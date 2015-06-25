@@ -35,7 +35,7 @@ This invokes a simplistic IDML→HTML→EPUB pipeline that doesn’t attempt at 
 structure in the input (other pipelines are in preparation). 
 In the ```transpect``` folder, call:
 
-    ./calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=/dev/null adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:$(readlink -m debug) input=../content/sample/idml/sample.idml
+    calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=/dev/null adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:$(readlink -m debug) input=../content/sample/idml/sample.idml
 
 The EPUB will then be created as ../content/sample/sample.epub
 
@@ -46,14 +46,19 @@ Relative paths for the IDML input should work fine though.
 
 Cygwin example:
 
-    ./calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) input=../content/sample/idml/sample.idml
+    calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) input=../content/sample/idml/sample.idml
 
 ### HTML → EPUB pipeline
 
 The pipeline ```idml2epub.xpl``` invokes another pipeline, ```html2epub.xpl```, that you may also invoke directly:
 
-    ./calabash/calabash.sh -i source=edited.html -o html=/dev/null adaptions/common/xpl/html2epub.xpl
+    calabash/calabash.sh -i source=edited.html -o html=/dev/null adaptions/common/xpl/html2epub.xpl
 
+Please note that this is for HTML input that is also well-formed XML. For the general case of HTML5, there is a different
+pipeline that uses validator.nu to parse the file:
+
+    calabash/calabash.sh -o raw-html=input.xhtml adaptions/common/xpl/html5_2epub.xpl input=input.html
+ 
 
 ## Documentation
 
