@@ -44,6 +44,10 @@ If you’re on a Mac and if you didn’t install the GNU version of readlink, yo
 If you specify ```debug-dir-uri=debug```, it might be that the debug files are stored in xproc-util/store-debug/xpl/debug. 
 Relative paths for the IDML input should work fine though.
 
+Command for Mac users:
+
+    calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=/dev/null adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:$(pwd)/debug input=../content/sample/idml/sample.idml
+
 Cygwin example:
 
     calabash/calabash.sh -o html=out.html -o raw-html=raw.html -o hub=$(cygpath -ma /dev/null) adaptions/common/xpl/idml2epub.xpl debug=yes debug-dir-uri=file:/$(cygpath -ma ../debug) input=../content/sample/idml/sample.idml
