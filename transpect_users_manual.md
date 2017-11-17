@@ -1,6 +1,6 @@
 
-#THROUGH THE PUBLISHING CONVERTER
-###The hybrid publishing converter manual for designers and editors
+# THROUGH THE PUBLISHING CONVERTER
+### The hybrid publishing converter manual for designers and editors
 
 The hybrid publishing converter is a tool that converts publications formats into others in a durable, high-quality, design caring hybrid publishing way.
 
@@ -8,24 +8,24 @@ In short, “hybrid publishing” refers to contemporary practices of producing 
 
 The production of a publications layout is informed by the tools used and the culture embedded in these tools. There isn’t one “way” of doing layout but traditions, conventions and a series of tools, more or less accessible, more or less taught and used. The approach here isn’t to build one tool solving all the issues that come with a hybrid publishing workflow but to try and find clever connections between different tools — open source ones as much as we can, to make it available to smaller publishers, graphic designers and institutions.
 
-###Installation of the hybrid publishing converter and terminal commands
+### Installation of the hybrid publishing converter and terminal commands
 
 Clone the converter [repository](https://github.com/consortium/publishing-converter/tree/master/transpect) in your computer, and follow the readme to [install it](https://github.com/consortium/publishing-converter/tree/master/transpect/README.md)
 
 Once you have installed it, create a folder on your computer in which you will put your publications files.
 Don’t forget to adapt the path of the command ``ìnput=`` to point at the right files.
 
-###HTML ➝ EPUB
+### HTML ➝ EPUB
 
-###Run the converter through the Terminal
+### Run the converter through the Terminal
 
     calabash/calabash.sh -o raw-html=input.xhtml adaptions/common/xpl/html5_2epub.xpl input=***path***/***filename***.html
 
 See also the [installation manual](https://github.com/consortium/BinB/blob/master/transpect/README.md).
 
-###IDML ➝ EPUB
+### IDML ➝ EPUB
 
-###Some of the components of the hybrid publishing converter:
+### Some of the components of the hybrid publishing converter:
 
 * an IDML file with linked assets, images, fonts
 
@@ -36,28 +36,28 @@ See also the [installation manual](https://github.com/consortium/BinB/blob/maste
 * some configuration files
 
 
-###Preparation of the input file
+### Preparation of the input file
 
 The preparation of the InDesign file depends of the situation: is it an existing document that needs to be converted or is it a document that doesn’t exist yet and needs to be created?
 
-###CONVERT AN EXISTING DOCUMENT
+### CONVERT AN EXISTING DOCUMENT
 
 Converting old InDesign publications in an open source structured format like HTML allows them to last longer in an accessible and flexible format: they can be re-used, re-published under new formats and re-distributed much more easily.
 
-####Style mapping
+#### Style mapping
 
 Re-styling the old InDesign document would take ages and isn’t the point here. What we want to do is give enough information to the converter so that it can save as much information as possible.
 The styles can then be mapped in an html table in order to improve the translation into html structure and css styling.
 
-####Page anchoring script
+#### Page anchoring script
 
 Download the page anchoring script here: https://github.com/le-tex/InDesignScripts/blob/master/pagenames/PageNamesToStoryALL.jsx
 import it in InDesign and run it in the INDD document.
 It will add information as conditional text on every element so that the converter knows how to order them in the ePub.
 
-###START A NEW INDESIGN DOCUMENT
+### START A NEW INDESIGN DOCUMENT
 
-###FORMAT & PROPORTIONS
+### FORMAT & PROPORTIONS
 The main difference between a classical page-to-page print layout and hybrid-digital layout is that, in the first case, the final page format is fixed, while in the second case the page format is variable and depends of the size and settings of the device of each user.
 In the digital realm, since the format isn’t fixed, it might be more about proportions, that can be set as percents of each element container.
 
@@ -66,7 +66,7 @@ The proportions between the content and the container—for instance the size of
 Others, won’t need that much importance, compared to the size of the other elements (text, the surface of the page) and will be better in a proportionnally smaller size.
 But some projects will also need a different treatment in the different formats: big images in the printed version might be displayed in the ereader version as small vignettes linking to a web page with even bigger versions of the images than in the printed format, in which you can zoom and navigate in a different way.
 
-###FLOW
+### FLOW
 The common denominator between a paper and digital publications is the notion of story, or thread: a series of elements developing a narrative by their composition and their disposition in sequences, framed by different elements in the different formats: the size of the pages, bound in a paper version, the size of the screen in an ereader, the size of the screen, and inside, the size of the reading application window on a computer.
 Thus, the easiest situation is when a main “story” runs through all the pages and represents a kind of skeleton for the whole document.
 Historically and technically, the text is the element that represents the story. 
@@ -75,10 +75,10 @@ In the page-to-page layout software realm, like InDesign, the text blocks repres
 But this only represents one vision of the book, majoritary but not exhaustive, centered on a main and linear discourse, and a primacy of the text over images…
 Situations that imply two or more parallel stories require reorganisation to fit flowing and hybrid formats.
 
-###NAVIGATION
+### NAVIGATION
 The navigation is also informed by the degree of transparency of a paper, its flipping qualities, the ability to zoom in a digital publication, click on links and search.
 
-###METADATA
+### METADATA
 Create a text condition 'metadata' and include metadata, one per paragraph, as name and value pairs, separated by a colon, for instance:
 dc.title: Book Title
 dc.identifier: id-number (like urn:isbn:9781449325299)
@@ -94,11 +94,11 @@ All property names starting with 'dc.' will refer to Dublin Core
 properties: http://dublincore.org/documents/dces/
 
 
-####Granular assignment of metadata:
+#### Granular assignment of metadata:
 Each metadata refers to the unit established by the structural element that preceeds it. For instance, a metadata inserted immediately after a heading refers to the section defined by this heading. Anything before the first heading will refer to the whole book.
 A 'metadata' conditional content that is immediately after a figure or a table (after their caption for instance) will be attached to the corresponding objects.
 
-###Anchoring things to a main text
+### Anchoring things to a main text
 If we use INDD epub export and have many parallel un-anchored item > exported object order is random
 Anchoring is necessary to restore the linear reading order, attach figures and marginal notes to a main text.
 Limitations: if there is no main text on a spread (no anchoring possibilities on a page)
@@ -106,7 +106,7 @@ or anchor linked text frames spread across two pages to another text — anchori
 use of StoryID & StoryRef
 FigureRef (write the name of the image with FigureRef)
 
-###IMAGES
+### IMAGES
 Each publication format require different image formats, due to their specific display parameters. Digital  like epubs require 
 The converter has an automatic tool to convert images in the right format, for instance from .tiff to .jpg. But some formats are a bit more complicated to handle, and it is always better to do this transformation by hand, in an image editor, which allows more control on the colors and contrasts.
 If you do it by hand, use the same name as the original image for the jpg, and save it in the images folder. No need to change the 
@@ -115,11 +115,11 @@ Add StoryID as a conditional text to a name of our choice
 Place the same string with an other conditional text StoryRef
 If no info, order is relative to the creation date
 
-###Captions
+### Captions
 
 When the caption is on its image, anchoring it will make the image be on top of the text block and thus hide the text, it is necessary then to add an intermediary empty text block, before the caption’s one.
 
-###TEXT
+### TEXT
 Works better with one main text
 If the texts are not linked, use a script that you run in INDD that will add two text conditions PageStart_1 and PageEnd_1 etc
 https://github.com/le-tex/InDesignScripts/blob/master/pagenames/PageNamesToStoryALL.jsx
@@ -142,16 +142,16 @@ COVER
 the cover is a file named cover.jpg in the images folder)
 
 
-###HIERARCHIC STRUCTURE
+### HIERARCHIC STRUCTURE
 
-###HEADINGS
+### HEADINGS
 
 
-###STYLES
+### STYLES
 
 Mapping file
 
-####Paragraphs
+#### Paragraphs
 Variants in paragraph styles:
 When one or a series of paragraphs that is preceeded by a heading they belong to (see “hierarchic structure”), have different stylings, you can for example decorate them with tilde classes, like this:
 paragraph~in_box
@@ -162,7 +162,7 @@ paragraph~fancy~space_above~centered
 
 Paragraphs that don’t have a heading but need to be grouped in some way should have a distinct base name, such as paragraph_stanza_line
 
-####Heading
+#### Heading
 There may be groups of headers, for instance: chapter title, chapter author and chapter subtitle.
 In that case, use heading_1_author (or author_1) and
 heading_1_subtitle (or subheading_1). We can group these before
@@ -202,34 +202,34 @@ epub, type
 
 TOC: story on it own (text(s) frame(s)) but not placed into the main text
 
-###Footnotes and endnotes
+### Footnotes and endnotes
 
-###Different orientations
-
-
-###VERTICAL ALIGN
+### Different orientations
 
 
-###Anchors
+### VERTICAL ALIGN
+
+
+### Anchors
 To anchor two element that are not on the same page (which InDesign doesn’t allow), use the conditional text IDStory and IDRef
 
 
 
-###Rotated elements
+### Rotated elements
 By default, they will be displayed in the epub with a normal orientation, as the reason for rotating an element might be different on a paper book than in an epub (which doesn’t necessarily allow you to turn the device as a book)
 image~90_left
 image~90_right
 
 
-###Horizontal lines?
+### Horizontal lines?
 
 
-###Templates
+### Templates
 The word template has different meanings in the different design tools.
 In the fixed visual layout systems, even if the approach is very “hand-crafted”, templates and guides can be created to build constants and systematics throughout the pages. 
 In the flowing code-based layout systems, a template is a kind of empty structure, that gets filled with a content stored somewhere else, in a database.
 
-###template-style-content
+### template-style-content
 Distinction between the template (empty structure) the style (generic style inofrmation) and the content (stored somewhere else and imported automatically in the template).
 
 
@@ -253,7 +253,7 @@ anywhere on the drive: specify the path to the html file
 adapt it to html5
 
 
-###Run the converter through the Terminal
+### Run the converter through the Terminal
 
 Terminal command in Linux:
 
@@ -265,7 +265,7 @@ MacOS:
 
 See also the [installation manual](https://github.com/consortium/BinB/blob/master/transpect/README.md).
 
-###ONLINE CONVERTER
+### ONLINE CONVERTER
 
 Url of the converter:
 http://transpect.le-tex.de/en/converter/save_file?set_button=&upload_type=BinB
