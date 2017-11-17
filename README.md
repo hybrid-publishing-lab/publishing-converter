@@ -1,4 +1,4 @@
-#PUBLISHING CONVERTER
+# PUBLISHING CONVERTER
 
 The hybrid publishing converter is a tool that converts publications formats into others, in a durable, high-quality, design caring, hybrid publishing way.
 
